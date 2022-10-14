@@ -1,0 +1,93 @@
+& when (@critical) {
+    .ulmod-all-bundle-items-data {
+        display:none;
+    }
+}
+
+& when not (@critical) {
+    div#multiple-option-bundle-image-ulmod {
+        position: relative;
+        display: block;
+        width: 100%;
+        max-width: 450px;
+    }
+    .multiple-option-bundle-image-ulmod {
+        .image-child-bundle {
+            border: 1px solid transparent;
+            padding: 5px;
+            margin-left: 5px;
+            text-align: center;
+        }
+    }
+    .image-child-bundle.selected {
+        border-color: #fb0000;
+        // margin-right: 5px;
+        // margin-bottom: 5px;
+    }
+    #multiple-option-bundle-image-ulmod {
+        .owl-controls {
+            .owl-buttons {
+                .owl-next {
+                    right: 4px;
+                    top: 40%;
+                    text-indent: 100%;
+                    white-space: nowrap;
+                    overflow: hidden;
+                }
+                .owl-prev {
+                    left: 8px !important;
+                    top: 40%;
+                    right: inherit;
+                    text-indent: 100%;
+                    white-space: nowrap;
+                    overflow: hidden;
+                }
+            }
+        }
+    }
+    #multiple-option-bundle-image-ulmod.owl-theme {
+        &:hover {
+            .owl-controls {
+                .owl-buttons {
+                    display: block;
+                }
+            }
+        }
+        .owl-controls {
+            .owl-buttons {
+                display: none;
+            }
+        }
+    }
+    .image-child-bundle {
+        margin-left: 20px;
+    }
+    .multiple-option-bundle-image-ulmod.owl-theme {
+        .owl-controls {
+            .owl-buttons {
+                div {
+                    text-indent: -9999px;
+                }
+            }
+        }
+    }
+    .multiple-option-bundle-image-ulmod.owl-carousel {
+        .owl-prev {
+            left: 0;
+            right: auto;
+        }
+    }
+
+    // increase options wrapper size on Breeze themes
+    .bundle-wrapper {
+        @media @media-md {
+            .bundle-options-wrapper {
+                width: 60%;
+            }
+
+            .block-bundle-summary {
+                width: 40%;
+            }
+        }
+    }
+}

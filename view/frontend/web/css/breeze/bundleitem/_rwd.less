@@ -1,0 +1,34 @@
+& when not (@critical) {
+	@media only screen and (max-width: 767px) {
+		.um-bundle-item-popup-container {
+			.um-popup-left-blocks {
+				width: 100%;
+				padding-bottom: 30px;
+			}
+		}
+		.bundle-options-container {
+			.product-options-wrapper {
+				.fieldset {
+					.um-b-o-expand-collapse {
+						>.label {
+							padding: 10px 4px 10px 5px !important;
+						}
+						>.control {
+							padding: 10px 4px 10px 5px !important;
+						}
+					}
+				}
+			}
+		}
+	}
+	@media only screen and (min-width: 768px) {
+		.um-bundle-item-popup-container {
+			.um-popup-right-blocks {
+				width: 75%;
+			}
+			.um-popup-left-blocks {
+				width: 25%;
+			}
+		}
+	}
+}
