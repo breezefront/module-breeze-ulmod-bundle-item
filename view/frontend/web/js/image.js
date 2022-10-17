@@ -155,23 +155,36 @@ define([
 
         /**
          * Event listener
+         * Breeze fix: rewritten using this._on for Turbo compatibility
 		 *
          * @private
          */
         _EventListener: function () {
             var $widget = this;
-            $(document).on('click', '#reorder-select-all', function () {
-                return $widget._OnClick($(this));
+
+            this._on(document, {
+                'click #reorder-select-all': function (e) {
+                    return $widget._OnClick($(e.target));
+                }
             });
-            $(window).on('resize', function () {// Breeze fix: resize => on('resize')
-                return $widget._resizeBundleOptionImage();
+
+            this._on(window, {
+                resize: function () {
+                    return $widget._resizeBundleOptionImage();
+                }
             });
-            $('select.bundle.option').on("change",function (e) {// Breeze fix: bind => on
-                return $widget._selectBundleOptionImage($(this));
-            })
-            $('select[multiple].bundle.option option').on("click",function (e) {// Breeze fix: bind => on; [multiple="multiple"] => [multiple]
-                 return $widget._multiSelectBundleOptionImage($(this));
-            })
+
+            this._on($('select.bundle.option'), {
+                change: function (e) {
+                    return $widget._selectBundleOptionImage($(e.target));
+                }
+            });
+
+            this._on($('select[multiple].bundle.option option'), {
+                click: function (e) {
+                    return $widget._multiSelectBundleOptionImage($(e.target));
+                }
+            });
         },
 
         /**
@@ -273,6 +286,19 @@ define([
                     $(this).find('.image-child-bundle').css('float','none');
                 }
             })
+        },
+
+        /**
+         * Breeze fix: added cleanup for Turbo compatibility
+         */
+        destroy: function () {
+            $('.bundle-options-wrapper').find(
+                '.multiple-option-bundle-image-ulmod, ' +
+                '.dropdown-option-bundle-image-ulmod, ' +
+                '.um-b-item-image, ' +
+                '.um-b-item-popup-link-container'
+            )
+            .remove();
         },
     });
     return $.mage.BundleItem;
