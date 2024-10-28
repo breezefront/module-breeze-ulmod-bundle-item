@@ -3,7 +3,7 @@
     "description": "Ulmod Bundle Product Options Image - Popup - Collapse integration with Breeze Frontend",
     "type": "magento2-module",
     "version": "1.0.2",
-    "license": "OSL-3.0",
+    "license": "MIT",
     "require": {
         "swissup/module-breeze": "^2.0.0"
     },
